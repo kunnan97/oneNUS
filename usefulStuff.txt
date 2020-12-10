@@ -1,0 +1,27 @@
+import React from 'react';
+import {
+    View,
+    Text,
+    StyleSheet
+} from 'react-native';
+
+const  = props => {
+    
+}
+
+const styles = StyleSheet.create({
+    
+});
+
+export default ;
+
+npm install --save react-navigation react-navigation-stack react-native-screens redux react-redux redux-thunk @expo/vector-icons expo-font moment react-native-gesture-handler redux-devtools-extension
+react-navigation-tabs
+
+react-navigation-drawer
+react-navigation-header-buttons
+react-navigation-material-bottom-tabs
+react-native-paper
+@react-native-community/masked-view   
+react-native-reanimated
+react-native-popover-view
