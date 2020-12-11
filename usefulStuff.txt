@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 
 const  = props => {
-    
+    return (
+        
+    );
 }
 
 const styles = StyleSheet.create({
