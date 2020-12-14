@@ -18,37 +18,31 @@ const TabIcon = props => {
             props.bus ? true : false, 
             props.home ? true : false, 
             props.map ? true : false
-        );
+    );
 
-    if (Platform.OS === 'ios') {
-        return (
-            <TouchableOpacity
-                style = {combinedStyles}
+    const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;  
+    
+    return (
+        <View style = {combinedStyles}>
+            <Touchable 
                 onPress = {onPressHandler}
-            >
-                {props.iconType}        
-            </TouchableOpacity> 
-        );
-    } else {
-        return (
-            <TouchableNativeFeedback
                 background = {TouchableNativeFeedback.Ripple(null, true)}
-                onPress = {onPressHandler}
+                ref = {props.ref}
             >
-                <View style = {combinedStyles}>
+                <View>
                     {props.iconType}
                 </View>
-            </TouchableNativeFeedback> 
-        );
-    }
+            </Touchable>
+        </View>
+    );
 }
 const styles = StyleSheet.create({
     iconNotClickedContainer :{
-        marginHorizontal: '2.5%',
+        marginHorizontal: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '10%',
-        height: '30%'
+        width: 50,
+        height: 50
       }
 });
 
