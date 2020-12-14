@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     View,
     Text,
@@ -17,19 +17,9 @@ const SlidingScreens = props => {
     const scrollView = React.useRef();
     const {offset} = props;
 
-    const initialOffset = {
-        x: width,
-        y: 0,
-        animated: true
-    };
-
     useEffect(() => {
-        if (!offset) {
-            scrollView.current.scrollTo(initialOffset);
-        } else {
-            scrollView.current.scrollTo(offset);
-        }
-    }, [offset, initialOffset]);
+        scrollView.current.scrollTo(offset);
+    }, [offset]);
 
     return (
         <ScrollView
@@ -40,7 +30,7 @@ const SlidingScreens = props => {
           showsHorizontalScrollIndicator = {false}
           overScrollMode = {'never'}
           onScroll = {props.onScroll}
-          contentOffset = {{x: width, y: 0}}
+          //contentOffset = {{x: width, y: 0}}
           ref = {scrollView}
         >
           <View style={{ width, height }}>

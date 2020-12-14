@@ -22,7 +22,7 @@ const MainScreen = props => {
     const [isBusScreen, setIsBusScreen] = useState(false);
     const [isHomeScreen, setIsHomeScreen] = useState(true);
     const [isMapScreen, setIsMapScreen] = useState(false);
-    const [offset, setOffset] = useState();
+    const [offset, setOffset] = useState(initialOffset);
 
     const setScreen = (bus, home, map) => {
         setIsBusScreen(bus)
@@ -43,7 +43,7 @@ const MainScreen = props => {
 
     const onPressIconHandler = (bus, home, map) => {
         const newOffset = {
-            x: bus ? 0 : home ? width : width * 2,
+            x: bus ? 0 : (home ? width : width * 2),
             y: 0,
             animated: true
         }
