@@ -11,18 +11,12 @@ import TabContainer from '../component/TabContainer';
 import SlidingScreens from '../component/SlidingScreens';
 
 const width = Dimensions.get('window').width - 30;
-const height = Dimensions.get('window').height - 150 - 30;
 
 const MainScreen = props => {
-    const initialOffset = {
-        x: width,
-        y: 0,
-        animated: true
-    };
     const [isBusScreen, setIsBusScreen] = useState(false);
     const [isHomeScreen, setIsHomeScreen] = useState(true);
     const [isMapScreen, setIsMapScreen] = useState(false);
-    const [offset, setOffset] = useState(initialOffset);
+    const [offset, setOffset] = useState();
 
     const setScreen = (bus, home, map) => {
         setIsBusScreen(bus)
@@ -34,7 +28,10 @@ const MainScreen = props => {
         const screenWdithEstimate = event.nativeEvent.contentOffset.x;
         if (screenWdithEstimate < width / 2) {
             setScreen(true, false, false);
-        } else if ((width - (width/ 10)) < screenWdithEstimate && screenWdithEstimate < (width + (width/ 10))) {
+        } else if (
+            (width - (width/ 10)) < screenWdithEstimate 
+                && screenWdithEstimate < (width + (width/ 10))
+        ) {
             setScreen(false, true, false);
         } else if ((width + (width / 2)) < screenWdithEstimate) {
             setScreen(false, false, true);
@@ -43,17 +40,15 @@ const MainScreen = props => {
 
     const onPressIconHandler = (bus, home, map) => {
         const newOffset = {
-            x: bus ? 0 : (home ? width : width * 2),
-            y: 0,
-            animated: true
+            offset: bus ? 0 : (home ? width : width * 2)
         }
         setOffset(newOffset)
     }
 
     return (
-        <ImageBackground
+        <View
             style = {styles.screen}
-            source = {require('../assets/background_mid.png')}
+            //source = {require('../assets/background_mid.png')}
         >
             <TabContainer 
                 isBusScreen = {isBusScreen}
@@ -70,7 +65,7 @@ const MainScreen = props => {
             </View>
             
             <StatusBar hidden = {true}/>
-        </ImageBackground>
+        </View>
     );
 };
 

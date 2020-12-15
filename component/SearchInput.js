@@ -1,4 +1,4 @@
-import React, {createRef, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     View,
     StyleSheet,
@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     ActivityIndicator
 } from 'react-native';
-import { color } from 'react-native-reanimated';
 
 const SearchInput = props => {
     const inputRef = React.createRef();

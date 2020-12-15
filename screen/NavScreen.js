@@ -10,7 +10,6 @@ import SearchContainer from '../component/SearchContainer';
 const NavScreen = props => {
     return (
         <SearchContainer 
-            
         />
     );
 }

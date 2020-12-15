@@ -4,7 +4,7 @@ import {
     Text,
     StyleSheet,
     Dimensions,
-    ScrollView
+    FlatList
 } from 'react-native';
 
 import NavScreen from '../screen/NavScreen';
@@ -18,11 +18,25 @@ const SlidingScreens = props => {
     const {offset} = props;
 
     useEffect(() => {
-        scrollView.current.scrollTo(offset);
+      if (offset) {
+        scrollView.current.scrollToOffset(offset);
+      }
     }, [offset]);
 
+    const renderItemHandler = (item) => {
+        return (
+          <View style={{ width, height }}>
+            {
+              item.item === 1 ? <NavScreen />
+              : item.item === 2 ? <HomeScreen /> 
+              : <Text>Screen 3</Text>
+            }
+          </View>
+        );
+    }
+
     return (
-        <ScrollView
+        <FlatList
           style={{ flex: 1}}
           horizontal={true}
           scrollEventThrottle={0}
@@ -30,19 +44,15 @@ const SlidingScreens = props => {
           showsHorizontalScrollIndicator = {false}
           overScrollMode = {'never'}
           onScroll = {props.onScroll}
-          //contentOffset = {{x: width, y: 0}}
+          data = {[1, 2, 3]}
+          renderItem = {renderItemHandler}
           ref = {scrollView}
-        >
-          <View style={{ width, height }}>
-            <NavScreen />
-          </View>
-          <View style={{ width, height }}>
-            <HomeScreen />
-          </View>
-          <View style={{ width, height }}>
-            <Text>Screen 3</Text>
-          </View>
-        </ScrollView>
+          keyExtractor = {item => Math.random().toString()}
+          initialScrollIndex = {1}
+          getItemLayout={(data, index) => (
+            {length: width, offset: width * index, index}
+          )}
+        />
     );
 
     
