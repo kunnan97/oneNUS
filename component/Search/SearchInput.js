@@ -4,11 +4,13 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    Text
 } from 'react-native';
 
 const SearchInput = props => {
     const inputRef = React.createRef();
+
     const [loc, setLoc] = useState();
 
     const {toClear, location} = props;
@@ -30,9 +32,10 @@ const SearchInput = props => {
                 placeholderTextColor = "white"
                 ref = {inputRef}
                 value = {loc ? loc.lat + "," + loc.lng : null}
+                onChangeText = {props.onChangeText}
             />
 
-            <View style = {styles.clearIconContainer}>
+            <View style = {styles.iconContainer}>
                 {props.isLoading ? 
                     <ActivityIndicator size = 'small' color = {"white"}/>
                     :
@@ -49,22 +52,23 @@ const SearchInput = props => {
 const styles = StyleSheet.create({
     input: {
         width: '100%',
-        height: 40,
+        height: 50,
         borderColor: 'white',
         borderWidth: 2,
-        borderRadius: 20,
+        borderRadius: 25,
         paddingLeft: 20,
-        paddingRight: 40
+        paddingRight: 40,
+        fontSize: 18,
+        color: 'white'
     },
 
-    clearIconContainer: {
+    iconContainer: {
         position: 'absolute',
         right: 0,
         width: '20%',
-        height: 40,
+        height: 50,
         justifyContent: 'center',
-        alignItems: 'flex-end',
-        paddingRight: 6
+        alignItems: 'center'
     }
 });
 

@@ -7,12 +7,12 @@ import {
     Dimensions
 } from 'react-native';
 
-import TabContainer from '../component/TabContainer';
+import TabContainer from '../component/Tabs/TabContainer';
 import SlidingScreens from '../component/SlidingScreens';
 
 const width = Dimensions.get('window').width - 30;
 
-const MainScreen = props => {
+const MainScreen = _props => {
     const [isBusScreen, setIsBusScreen] = useState(false);
     const [isHomeScreen, setIsHomeScreen] = useState(true);
     const [isMapScreen, setIsMapScreen] = useState(false);
@@ -38,7 +38,7 @@ const MainScreen = props => {
         }
     }
 
-    const onPressIconHandler = (bus, home, map) => {
+    const onPressIconHandler = (bus, home, _map) => {
         const newOffset = {
             offset: bus ? 0 : (home ? width : width * 2)
         }

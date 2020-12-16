@@ -33,7 +33,7 @@ const SlidingScreens = props => {
             }
           </View>
         );
-    }
+          }
 
     return (
         <FlatList
@@ -47,9 +47,9 @@ const SlidingScreens = props => {
           data = {[1, 2, 3]}
           renderItem = {renderItemHandler}
           ref = {scrollView}
-          keyExtractor = {item => Math.random().toString()}
+          keyExtractor = {() => Math.random().toString()}
           initialScrollIndex = {1}
-          getItemLayout={(data, index) => (
+          getItemLayout={(_data, index) => (
             {length: width, offset: width * index, index}
           )}
         />

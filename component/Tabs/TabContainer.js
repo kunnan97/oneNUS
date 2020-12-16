@@ -7,7 +7,7 @@ import { MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-ic
 
 import TabIcon from './TabIcon';
 
-const busIcon = <MaterialCommunityIcons name="bus-side" size={40} color="black" />;
+const busIcon = <MaterialCommunityIcons name="bus-side" size={38} color="black" />;
 const homeIcon = <AntDesign name="home" size={35} color="black" />;
 const mapIcon = <FontAwesome5 name="route" size={30} color="black" />;
 

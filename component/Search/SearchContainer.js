@@ -4,17 +4,18 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    Alert
+    Alert,
+    ActivityIndicator
 } from 'react-native';
 import { FontAwesome, Entypo, MaterialIcons } from '@expo/vector-icons'; 
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
-import SearchInput from '../component/SearchInput';
+import SearchInput from './SearchInput';
 
 const searchIcon = <FontAwesome name="search" size={37} color="black" />;
-const clearIcon = <Entypo name="cross" size={24} color="black" />;
-const locIcon = <MaterialIcons name="my-location" size={24} color="black" />;
+const clearIcon = <Entypo name="cross" size={30} color="black" />;
+const locIcon = <MaterialIcons name="my-location" size={30} color="black" />;
 
 const SearchContainer = props => {
     const [toClear, setToClear] = useState(false);
@@ -23,6 +24,7 @@ const SearchContainer = props => {
 
     const clearHandler = () => {
         setToClear(!toClear);
+        props.clearResult();
     };
 
     const requestLocPerm = async () => {
@@ -47,7 +49,7 @@ const SearchContainer = props => {
         }
 
         setLoadingLoc(true);
-        const location = await Location.getCurrentPositionAsync();
+        const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.High});
         setLoadingLoc(false);
 
         setLocation({
@@ -76,6 +78,7 @@ const SearchContainer = props => {
                     onPress = {userLocHandler}
                     location = {location}
                     isLoading = {loadingLoc}
+                    onChangeText = {props.onChangeStartText}
                 />
                 
                 <SearchInput 
@@ -83,11 +86,14 @@ const SearchContainer = props => {
                     sideIcon = {clearIcon}
                     onPress = {clearHandler}
                     toClear = {toClear}
+                    onChangeText = {props.onChangeEndText}
                 />                
             </View>
             
             <View style = {styles.searchIconContainer} >
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress = {props.searchHandler}
+                >
                     {searchIcon} 
                 </TouchableOpacity>
             </View>
@@ -119,7 +125,7 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         height: 140,
-        width: '60%',
+        width: '65%',
         justifyContent: 'space-around'
     },
 
