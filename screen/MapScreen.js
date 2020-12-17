@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    Text
 } from 'react-native';
 import Popover from 'react-native-popover-view';
 
@@ -32,7 +33,14 @@ const MapScreen = props => {
                 );
             })}
 
-            <Popover isVisible={visible} onRequestClose={() => setVisible(false)} style = {styles.modalContainer}>
+            <Popover 
+                isVisible={visible} 
+                onRequestClose={() => setVisible(false)} 
+                style = {styles.modalContainer}
+                popoverStyle = {{
+                    borderRadius: 20
+                }}
+            >
                 <BusMap 
                     bus = {busSelected}
                 />
@@ -52,9 +60,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: '80%',
         height: '80%'
-    },
-
-
+    }
 });
 
 export default MapScreen;

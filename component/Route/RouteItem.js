@@ -63,8 +63,9 @@ const RouteItem = props => {
                                         : item.includes(' to ') ? require('../../assets/ic_thick_middle.png')
                                         : null
                                      }
-
                                      style = {{width: 39, height: 39}}
+                                     key = {item}
+                                     
                                 />
                         )
                         })}
@@ -73,8 +74,15 @@ const RouteItem = props => {
                     <View style = {{marginLeft: 10}}>
                         {props.route.route.map(item => {
                             return (
-                                <Text style = {{marginVertical: 10, fontStyle: item.includes(' min') ? 'italic' : null}}>
-                                    {item}
+                                <Text 
+                                    style = {{
+                                        marginVertical: 10, 
+                                        fontStyle: item.includes(' min') ? 'italic' : null,
+                                        fontWeight: item.includes(' min') ? null : 'bold'
+                                    }}
+                                    key = {item}
+                                >
+                                    {item.replace("_n", "\n")}
                                 </Text>
                             )
                     })}

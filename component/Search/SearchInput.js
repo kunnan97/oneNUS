@@ -15,7 +15,6 @@ const SearchInput = props => {
     const {toClear, nearestBusStop, onChangeText} = props;
 
     useEffect(() => {
-        console.log("HI")
         setBusStop(nearestBusStop);
         onChangeText(nearestBusStop);
     }, [nearestBusStop]);

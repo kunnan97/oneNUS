@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {
     StyleSheet,
-    Dimensions
+    Dimensions,
+    Text,
+    View
 } from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import * as Permissions from 'expo-permissions';
@@ -92,6 +94,19 @@ const BusMap = props => {
                     );
                 }) : null
             }
+
+            <View style = {styles.busTitleContainer}>
+                    <Text style = {{
+                        fontSize: 30,
+                        fontWeight: 'bold',
+                        color: 'white'
+                        
+                    }}>
+                        {props.bus}
+                    </Text>
+            </View>
+            
+
         </MapView>
     );
 }
@@ -100,6 +115,13 @@ const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width * 0.85,
         height: Dimensions.get('window').height * 0.6
+    },
+
+    busTitleContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        backgroundColor: 'rgba(128,128,128, 0.6)'
     }
 });
 
