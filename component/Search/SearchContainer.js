@@ -4,8 +4,7 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    Alert,
-    ActivityIndicator
+    Alert
 } from 'react-native';
 import { FontAwesome, Entypo, MaterialIcons } from '@expo/vector-icons'; 
 import * as Location from 'expo-location';
@@ -26,6 +25,7 @@ const SearchContainer = props => {
     const clearHandler = () => {
         setToClear(!toClear);
         props.clearResult();
+        setNearestBusStop();
     };
 
     const requestLocPerm = async () => {

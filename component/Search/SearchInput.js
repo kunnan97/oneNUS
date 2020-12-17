@@ -4,8 +4,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
-    ActivityIndicator,
-    Text
+    ActivityIndicator
 } from 'react-native';
 
 const SearchInput = props => {
@@ -13,10 +12,12 @@ const SearchInput = props => {
 
     const [busStop, setBusStop] = useState();
 
-    const {toClear, nearestBusStop} = props;
+    const {toClear, nearestBusStop, onChangeText} = props;
 
     useEffect(() => {
+        console.log("HI")
         setBusStop(nearestBusStop);
+        onChangeText(nearestBusStop);
     }, [nearestBusStop]);
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const SearchInput = props => {
                 placeholderTextColor = "white"
                 ref = {inputRef}
                 value = {busStop ? busStop : null}
-                onChangeText = {props.onChangeText}
+                onChangeText = {onChangeText}
             />
 
             <View style = {styles.iconContainer}>

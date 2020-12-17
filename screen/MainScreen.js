@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
     StyleSheet,
-    ImageBackground,
     StatusBar,
     View,
     Dimensions
