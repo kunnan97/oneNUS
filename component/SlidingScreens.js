@@ -9,6 +9,7 @@ import {
 
 import NavScreen from '../screen/NavScreen';
 import HomeScreen from '../screen/HomeScreen';
+import MapScreen from '../screen/MapScreen';
 
 const width = Dimensions.get('window').width - 30;
 const height = Dimensions.get('window').height - 150 - 30;
@@ -29,7 +30,7 @@ const SlidingScreens = props => {
             {
               item.item === 1 ? <NavScreen />
               : item.item === 2 ? <HomeScreen /> 
-              : <Text>Screen 3</Text>
+              : <MapScreen />
             }
           </View>
         );

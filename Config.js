@@ -39,7 +39,7 @@ export const convertToFirestore = (busStop) => {
             return 'i Temasek';
         case "OPP HSSML":
         case "BIZ 2":
-            return "j BIZ";
+            return "j Biz";
         case "TCOMS": 
         case "OPP TCOMS":
             return "k TCOMS";

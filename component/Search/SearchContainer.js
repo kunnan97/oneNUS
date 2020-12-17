@@ -12,6 +12,7 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
 import SearchInput from './SearchInput';
+import {outputNearestBusStop} from '../../Coordinates';
 
 const searchIcon = <FontAwesome name="search" size={37} color="black" />;
 const clearIcon = <Entypo name="cross" size={30} color="black" />;
@@ -19,7 +20,7 @@ const locIcon = <MaterialIcons name="my-location" size={30} color="black" />;
 
 const SearchContainer = props => {
     const [toClear, setToClear] = useState(false);
-    const [location, setLocation] = useState();
+    const [nearestBusStop, setNearestBusStop] = useState();
     const [loadingLoc, setLoadingLoc] = useState(false);
 
     const clearHandler = () => {
@@ -28,15 +29,19 @@ const SearchContainer = props => {
     };
 
     const requestLocPerm = async () => {
-        const result = await Permissions.askAsync(Permissions.LOCATION);
+        const result = await Permissions.getAsync(Permissions.LOCATION);
 
-        if (result.status !== 'granted') {
-            Alert.alert(
-                'Insufficient permissions!', 
-                'You need to grant location while using the app!', 
-                [{text: 'Okay'}]
-            );
-            return false;
+        if(result.status !== 'granted') {
+            const response = await Permissions.askAsync(Permissions.LOCATION);
+
+            if (response.status !== 'granted') {
+                Alert.alert(
+                    'Insufficient permissions!', 
+                    'You need to grant location while using the app!', 
+                    [{text: 'Okay'}]
+                );
+                return false;
+            }
         }
         return true;
     }
@@ -52,10 +57,12 @@ const SearchContainer = props => {
         const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.High});
         setLoadingLoc(false);
 
-        setLocation({
+        const userLoc = {
             lat: location.coords.latitude,
             lng: location.coords.longitude
-        })
+        };
+
+        setNearestBusStop(outputNearestBusStop(userLoc));
     }
 
     return (
@@ -76,7 +83,7 @@ const SearchContainer = props => {
                     sideIcon = {locIcon}
                     toClear = {toClear}
                     onPress = {userLocHandler}
-                    location = {location}
+                    nearestBusStop = {nearestBusStop}
                     isLoading = {loadingLoc}
                     onChangeText = {props.onChangeStartText}
                 />

@@ -11,17 +11,17 @@ import {
 const SearchInput = props => {
     const inputRef = React.createRef();
 
-    const [loc, setLoc] = useState();
+    const [busStop, setBusStop] = useState();
 
-    const {toClear, location} = props;
+    const {toClear, nearestBusStop} = props;
 
     useEffect(() => {
-        setLoc(location);
-    }, [location])
+        setBusStop(nearestBusStop);
+    }, [nearestBusStop]);
 
     useEffect(() => {
         inputRef.current.clear();
-        setLoc();
+        setBusStop();
     }, [toClear])
 
     return (
@@ -31,7 +31,7 @@ const SearchInput = props => {
                 placeholder = {props.type + " Location"}
                 placeholderTextColor = "white"
                 ref = {inputRef}
-                value = {loc ? loc.lat + "," + loc.lng : null}
+                value = {busStop ? busStop : null}
                 onChangeText = {props.onChangeText}
             />
 
