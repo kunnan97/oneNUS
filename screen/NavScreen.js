@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Alert
+    Alert,
+    Dimensions
 } from 'react-native';
 import {firebaseConfig, convertToFirestore} from '../Config';
 import * as firebase from 'firebase'
@@ -90,7 +91,7 @@ const NavScreen = props => {
     }
 
     return (
-        <View>
+        <View style = {{backgroundColor: 'white', height: Dimensions.get('window').height - 150 - 30, borderRadius: 10}}>
             <SearchContainer 
                 onChangeStartText = {onStartTextChangeHandler}
                 onChangeEndText = {onEndTextChangeHandler}

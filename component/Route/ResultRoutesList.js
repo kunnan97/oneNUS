@@ -15,6 +15,7 @@ const ResultRoutesList = props => {
                 end = {item.item.end}
                 time = {item.item.time}
                 route = {{route: item.item.route}}
+                numBusStop = {item.item.numBusStop}
             />
         );
     }

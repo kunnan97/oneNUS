@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-end', 
         padding: '10%',
-        backgroundColor: '#4092FF',
+        backgroundColor: '#96C3FF',
         flex: 1,
         borderRadius: 10
     },

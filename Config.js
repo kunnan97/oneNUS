@@ -53,12 +53,12 @@ export const convertToFirestore = (busStop) => {
         case "EA":
             return "n Jap Sch";
         case "COLLEGE GREEN": 
-        case "BG MRT":
+        case "BOTANIC GARDEN MRT":
             return "o Botanic";
         case "OTH BUILDING":
             return "p OTH Building";
         case "UTOWN":
-            return "q Utown";
+            return "q UTown";
         case "KV":
             return "r KV";
         case "KR BUS TERMINAL":
