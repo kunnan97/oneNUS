@@ -3,7 +3,8 @@ import {
     View,
     StyleSheet,
     Alert,
-    Dimensions
+    Dimensions,
+    ActivityIndicator
 } from 'react-native';
 import {firebaseConfig, convertToFirestore} from '../Config';
 import * as firebase from 'firebase'
@@ -42,10 +43,10 @@ const NavScreen = props => {
 
         let start = convertToFirestore(startQuery.toUpperCase().trim());
         let end = convertToFirestore(endQuery.toUpperCase().trim());
-        setIsLoading(true);
-        
-        const result = await fetchRoutes(start, end);
 
+        setIsLoading(true);
+        const result = await fetchRoutes(start, end);
+        setIsLoading(false);
         if (result.empty) {
             Alert.alert("No routes found! Try again.");
             return;
@@ -69,7 +70,7 @@ const NavScreen = props => {
         });
 
         setSearchedRoutes(routes);
-        setIsLoading(false);
+        
     };
 
     const fetchRoutes = async (start, end) => {
@@ -99,9 +100,16 @@ const NavScreen = props => {
                 isLoading = {isLoading}
             />
 
-            <ResultRoutesList
-                data = {searchRoutes}
-            />
+            {isLoading ? 
+                <View style = {{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+                    <ActivityIndicator size = 'large' color = {'black'}/>
+                </View>
+                :
+                <ResultRoutesList
+                    data = {searchRoutes}
+                />
+            }
+            
         </View>
         
     );

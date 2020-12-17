@@ -28,7 +28,7 @@ const RouteItem = props => {
                     {busIcon}
 
                     <Text style = {styles.text}>
-                        {props.buses}
+                        {props.buses.replace("_n", "\n")}
                     </Text>
                 </View>
 

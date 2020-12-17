@@ -52,6 +52,7 @@ const BusMap = props => {
     }
 
     return (
+        <>
         <MapView
             style = {styles.map}
             region = {mapRegion}
@@ -95,19 +96,21 @@ const BusMap = props => {
                 }) : null
             }
 
-            <View style = {styles.busTitleContainer}>
-                    <Text style = {{
-                        fontSize: 30,
-                        fontWeight: 'bold',
-                        color: 'white'
-                        
-                    }}>
-                        {props.bus}
-                    </Text>
-            </View>
+            
             
 
         </MapView>
+        <View style = {styles.busTitleContainer}>
+                <Text style = {{
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    color: 'white'
+                    
+                }}>
+                    {props.bus}
+                </Text>
+        </View>
+        </>
     );
 }
 
@@ -121,7 +124,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        backgroundColor: 'rgba(128,128,128, 0.6)'
+        height: 50,
+        backgroundColor: 'rgba(128,128,128, 0.6)',
+        position: 'absolute',
+        top: 0
     }
 });
 
