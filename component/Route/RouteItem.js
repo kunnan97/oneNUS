@@ -63,7 +63,7 @@ const RouteItem = props => {
                                         : item.includes(' to ') ? require('../../assets/ic_thick_middle.png')
                                         : null
                                      }
-                                     style = {{width: 39, height: 39}}
+                                     style = {{width: 39, height: 40}}
                                      key = {item}
                                      
                                 />
@@ -97,14 +97,21 @@ const RouteItem = props => {
 const styles = StyleSheet.create({
     itemContainer: {
         flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: 'black',
         height: 80,
         padding: 10,
         backgroundColor: 'white',
         borderRadius: 4,
         marginVertical: 1,
-        marginHorizontal: 3
+        marginHorizontal: 3,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3.84,
+
+        elevation: 3,
     },
 
     text: {

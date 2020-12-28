@@ -26,17 +26,22 @@ const styles = StyleSheet.create({
         marginVertical: '5%',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 15,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2},
-        shadowRadius: 5,
-        shadowOpacity: 0.8,
-        elevation: 2
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5
     },
 
     text: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#272B34'
     }
 });
 

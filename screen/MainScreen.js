@@ -49,7 +49,8 @@ const MainScreen = _props => {
             style = {styles.screen}
             //source = {require('../assets/background_mid.png')}
         >
-            <TabContainer 
+            <StatusBar barStyle="light-content" backgroundColor="#44A1FF" />
+                <TabContainer 
                 isBusScreen = {isBusScreen}
                 isHomeScreen = {isHomeScreen}
                 isMapScreen = {isMapScreen}
@@ -63,7 +64,7 @@ const MainScreen = _props => {
                 />
             </View>
             
-            <StatusBar hidden = {true}/>
+            <StatusBar hidden = {false}/>
         </View>
     );
 };
@@ -83,9 +84,9 @@ const styles = StyleSheet.create({
 
     screen: {
         flex: 1,
-        backgroundColor: '#96C3FF'
+        backgroundColor: '#44A1FF'
         
-    }
+    },
 });
 
 export default MainScreen;

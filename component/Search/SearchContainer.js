@@ -13,9 +13,9 @@ import * as Permissions from 'expo-permissions';
 import SearchInput from './SearchInput';
 import {outputNearestBusStop} from '../../Coordinates';
 
-const searchIcon = <FontAwesome name="search" size={37} color="black" />;
-const clearIcon = <Entypo name="cross" size={30} color="black" />;
-const locIcon = <MaterialIcons name="my-location" size={30} color="black" />;
+const searchIcon = <FontAwesome name="search" size={37} color="#272B34" />;
+const clearIcon = <Entypo name="cross" size={30} color="#272B34" />;
+const locIcon = <MaterialIcons name="my-location" size={30} color="#272B34" />;
 
 const SearchContainer = props => {
     const [toClear, setToClear] = useState(false);
@@ -110,7 +110,7 @@ const SearchContainer = props => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#4092FF',
+        backgroundColor: '#3D8EF3',
         height: 160,
         width: '100%',
         padding: 10,
@@ -119,10 +119,11 @@ const styles = StyleSheet.create({
     },
 
     wordsContainer: {
-        width: 70,
+        width: 60,
         height: 140,
         justifyContent: 'space-around',
-        paddingLeft: 10
+        paddingLeft: 10,
+        
     },
 
     text: {
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         height: 140,
-        width: '65%',
+        width: '70%',
         justifyContent: 'space-around'
     },
 

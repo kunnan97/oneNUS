@@ -7,9 +7,9 @@ import { MaterialCommunityIcons, AntDesign, FontAwesome5 } from '@expo/vector-ic
 
 import TabIcon from './TabIcon';
 
-const busIcon = <MaterialCommunityIcons name="bus-side" size={38} color="black" />;
-const homeIcon = <AntDesign name="home" size={35} color="black" />;
-const mapIcon = <FontAwesome5 name="route" size={30} color="black" />;
+const busIcon = <MaterialCommunityIcons name="bus-side" size={38} color="#272B34" />;
+const homeIcon = <AntDesign name="home" size={35} color="#272B34" />;
+const mapIcon = <FontAwesome5 name="route" size={30} color="#272B34" />;
 
 const TabContainer = props => {
     const [isBusPressed, setIsBusPressed] = useState(false);
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     iconClickedContainer: {
-        borderColor: 'black',
+        borderColor: '#272B34',
         borderBottomWidth: 5
     }
 });

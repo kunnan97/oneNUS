@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 40,
         fontSize: 18,
-        color: 'white'
+        color: 'white',
+        fontStyle: 'italic'
     },
 
     iconContainer: {
