@@ -5,7 +5,7 @@ import {
     Text,
     View
 } from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import * as Permissions from 'expo-permissions';
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -56,7 +56,7 @@ const BusMap = props => {
         <MapView
             style = {styles.map}
             region = {mapRegion}
-            provider = {"google"}
+            provider = {PROVIDER_GOOGLE}
             showsUserLocation = {true}
             showsMyLocationButton = {true}
             minZoomLevel = {14.7}
